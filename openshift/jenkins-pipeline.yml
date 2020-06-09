@@ -97,18 +97,6 @@ objects:
                                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                                   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
                                   https://maven.apache.org/xsd/settings-1.0.0.xsd">
-              <servers>
-                <server>
-                  <id>nexus3-snapshot-repository</id>
-                  <username>admin</username>
-                  <password>admin123</password>
-                </server>
-                <server>
-                  <id>nexus3-release-repository</id>
-                  <username>admin</username>
-                  <password>admin123</password>
-                </server>
-              </servers>
               <profiles>
                 <profile>
                   <id>nexus3</id>
@@ -116,16 +104,28 @@ objects:
                     <repository>
                       <id>central</id>
                       <url>http://${NEXUS_SERVICE_HOST}:${NEXUS_SERVICE_PORT}/repository/maven-all-public</url>
-                      <releases><enabled>true</enabled></releases>
-                      <snapshots><enabled>true</enabled></snapshots>
+                      <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                      </releases>
+                      <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                      </snapshots>
                     </repository>
                   </repositories>
                   <pluginRepositories>
                     <pluginRepository>
                       <id>central</id>
                       <url>http://${NEXUS_SERVICE_HOST}:${NEXUS_SERVICE_PORT}/repository/maven-all-public</url>
-                      <releases><enabled>true</enabled></releases>
-                      <snapshots><enabled>true</enabled></snapshots>
+                      <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                      </releases>
+                      <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                      </snapshots>
                     </pluginRepository>
                   </pluginRepositories>
                 </profile>
@@ -133,13 +133,6 @@ objects:
               <activeProfiles>
                 <activeProfile>nexus3</activeProfile>
               </activeProfiles>
-              <mirrors>
-                <mirror>
-                  <id>nexus</id>
-                  <mirrorOf>*</mirrorOf>
-                  <url>http://${NEXUS_SERVICE_HOST}:${NEXUS_SERVICE_PORT}/repository/maven-all-public/</url>
-                </mirror>
-              </mirrors>
             </settings>
                            """
                            stage('pre pull images') {
