@@ -47,3 +47,6 @@ Remarks:
 > testcontainers Spring Boot : https://github.com/testcontainers/testcontainers-spring-boot
 >
 > jenkins kubernetes : https://timmhirsens.de/posts/2019/07/testcontainers_on_jenkins_with_kubernetes/
+>
+> OKD 3.11 local installation : https://github.com/dcdh/okd-3x-local-installation/blob/master/nexus_docker_proxy_repository_installation.md
+> 
